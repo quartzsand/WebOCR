@@ -74,7 +74,7 @@ Create a new branch to work in locally, and send a pull request to me to merge w
 * Implement PWA features.
 * Implement local storage to save previous runs.
 * Implement PDF conversion
-* Implement or remove language checkmarks.
+* Implement or remove language checkboxes.
 * Implement security features.
 * Allow URL links to images.
 * Set size limits for uploads.
@@ -88,3 +88,6 @@ Create a new branch to work in locally, and send a pull request to me to merge w
 * **Brandon Rush** - *Programming*
 * ...
 
+## Notes
+* Right now the language checkboxes don't do anything.
+* The tesseract.js library loads the necessary files from a CDN. These files could be installed locally instead. 
