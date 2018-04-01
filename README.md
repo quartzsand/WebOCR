@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.
+What you need to install the software.
 * [Node.js and NPM](https://www.npmjs.com/get-npm) - The JS run time environment.
 
 ### Installing
@@ -79,4 +79,5 @@ Create a new branch to work in locally, and send a pull request to me to merge w
 ## Authors
 
 * **Brandon Rush** - *Programming*
+* ...
 
