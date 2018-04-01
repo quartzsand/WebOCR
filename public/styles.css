@@ -1,0 +1,89 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(182, 41, 60);
+  overflow: hidden;
+}
+
+#maintitle {
+  font-family: 'Patua One', 'Times New Roman', Times, cursive;
+  /* background-color: rgb(33, 155, 86); */
+  padding: 5px;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.095);
+  font-size: 5em;
+}
+
+#uploadtitle {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2em;
+  color: rgb(255, 255, 255);
+  margin: 2px;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  padding: 4px;
+}
+
+#upload {
+  margin: 2px;
+  padding: 2px;
+  border: 2px solid black;
+  height: 100px;
+  width: 100px;
+  background-color: rgb(255, 255, 255);
+}
+
+#container {
+  /* background-color: #fff; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+}
+
+#display {
+  color: white;
+  margin: 20px 20px 20px 20px;
+  padding: 15px;
+  width: 1200px;
+  height: auto;
+  border-style: solid;
+  border-width: 4px;
+  border-color: rgba(0, 0, 0, 0.013);
+  background-color: rgba(0, 0, 0, 0.095);
+  border-radius: 10px;
+  /* -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear; */
+}
+
+input,
+label {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px;
+  margin: 5px;
+}
+
+button {
+  margin: 5px;
+}
+
+.entry {
+  position: relative;
+}
+
+.thumb {
+  width: 15%;
+  padding: 5px;
+  margin: 5px;
+}
+
+/* @media screen and (max-width: 767px) {
+  .display {
+    width: 100%;
+    border-radius: 0px;
+    margin: 20px 0px 20px 0px;
+  }
+} */
