@@ -61,7 +61,7 @@ npm run build
 
 ### Versioning
 
-* [git](https://www.npmjs.com/get-npm) - Git source control.
+* [git](https://git-scm.com/downloads) - Git source control.
 
 Clone the source with:
 ```Shell
