@@ -54,7 +54,7 @@ npm run build
 ```
 ## Dependencies
 * Express.js
-* Tesseract.js
+* [Tesseract.js](https://github.com/naptha/tesseract.js)
 * Webpack
 
 ## Contributing
@@ -73,7 +73,14 @@ Create a new branch to work in locally, and send a pull request to me to merge w
 
 * Implement PWA features.
 * Implement local storage to save previous runs.
+* Implement PDF conversion
+* Implement or remove language checkmarks.
+* Implement security features.
+* Allow URL links to images.
+* Set size limits for uploads.
+* Create drag and drop region for file
 * Clean up and improve CSS.
+* Allow user to crop image before submitting. 
 * ...
 
 ## Authors
