@@ -11,10 +11,6 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them.
 * [Node.js and NPM](https://www.npmjs.com/get-npm) - The JS run time environment.
 
-```
-
-```
-
 ### Installing
 
 #### 1. Open the directory you want to work in and clone the source.
