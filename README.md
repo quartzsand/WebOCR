@@ -85,7 +85,7 @@ Create a new branch to work in locally, and send a pull request to me to merge w
 
 ## Authors
 
-* **Brandon Rush** - *Programming*
+* **Brandon** - *Programming*
 * ...
 
 ## Notes
