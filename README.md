@@ -15,7 +15,7 @@ What things you need to install the software and how to install them.
 
 #### 1. Open the directory you want to work in and clone the source.
 ```Shell
-git clone <link to this repo>
+git clone https://github.com/BrandonRush/Project.git
 ```
 #### 2. Install all dependencies listed in the package.json file (see dependencies below). You will then have a 'node_modules' folder. 
 ```Shell
@@ -65,8 +65,9 @@ npm run build
 
 Clone the source with:
 ```Shell
-git clone <repo link>
+git clone https://github.com/BrandonRush/Project.git
 ```
+Create a new branch to work in locally, and send a pull request to me to merge with your work. 
 
 ## Todo
 
