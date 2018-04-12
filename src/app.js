@@ -15,6 +15,7 @@ function init() {
       options += elem.id;
     }
   });
+
   console.log(options);
   if (file.type.match(/image.*/)) {
     const reader = new FileReader();
