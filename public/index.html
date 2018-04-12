@@ -5,19 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./styles.css">
   <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
-  <title>Project</title>
+  <link rel="manifest" href="./manifest.json">
+  <title>WebOCR</title>
 </head>
 
 <body>
   <header class="title" id="maintitle">
-    <p>TextCap</p>
+    <div id="loader"></div>
+    <p title="Web Optical Character Recognition" id="titletext">WebOCR</p>
   </header>
   <div id="container">
     <div id="display">
+      <div id="fade"></div>
+      <div id="spinner"></div>
+
       <form id="myForm">
         <div>
           <span>
@@ -60,7 +65,13 @@
         </div>
       </form>
     </div>
+    <footer>
+      <!-- Place this tag where you want the button to render. -->
+      <a class="github-button" href="https://github.com/BrandonRush" aria-label="Follow @BrandonRush on GitHub">Follow @BrandonRush</a>
+    </footer>
     <script src="./bundle.js"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>
