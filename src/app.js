@@ -1,5 +1,32 @@
 const Tesseract = require('tesseract.js');
+//////////////////////////////////////
+window.indexedDB =
+  window.indexedDB ||
+  window.mozIndexedDB ||
+  window.webkitIndexedDB ||
+  window.msIndexedDB;
 
+window.IDBTransaction = window.IDBTransaction ||
+  window.webkitIDBTransaction ||
+  window.msIDBTransaction || { READ_WRITE: 'readwrite' };
+
+window.IDBKeyRange =
+  window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+
+if (!window.indexedDB) {
+  console.log("Your browser doesn't support a stable version of IndexedDB.");
+}
+
+let db;
+let request = indexedDB.open('OCR', 1);
+request.onerror = (event) => {
+  console.log('Error opening database!');
+};
+request.onsuccess = (event) => {
+  db = event.target.result;
+};
+
+//////////////////////////////////////
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js');
   console.log('Service worker registered.');
