@@ -1,4 +1,4 @@
-# Software Engineering Project
+# WebOCR
 
 Web app that extracts text from an image/pdf.
 
@@ -9,26 +9,31 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 What you need to install the software.
+
 * [Node.js and NPM](https://www.npmjs.com/get-npm) - The JS run time environment.
 
 ### Installing
 
 #### 1. Open the directory you want to work in and clone the source.
+
 ```Shell
 git clone https://github.com/BrandonRush/Project.git
 ```
-#### 2. Install all dependencies listed in the package.json file (see dependencies below). You will then have a 'node_modules' folder. 
+
+#### 2. Install all dependencies listed in the package.json file (see dependencies below). You will then have a 'node_modules' folder.
+
 ```Shell
 npm install
 ```
 
 ## Starting the server
 
-Run a live instance of the app in your browser. 
+Run a live instance of the app in your browser.
 
 ### Use node to start server.
 
 Server will be started on [127.0.0.1:3300](http://localhost:3300). This host and port can be changed in server.js.
+
 ```Shell
 node server.js
 Server running at 127.0.0.1 on port 3300.
@@ -52,7 +57,9 @@ This command **must** be run whenever the source is modified! If it's not workin
 # This will run webpack for you
 npm run build  
 ```
+
 ## Dependencies
+
 * Express.js
 * [Tesseract.js](https://github.com/naptha/tesseract.js)
 * Webpack
@@ -64,15 +71,18 @@ npm run build
 * [git](https://git-scm.com/downloads) - Git source control.
 
 Clone the source with:
+
 ```Shell
-git clone https://github.com/BrandonRush/Project.git
+git clone https://github.com/BrandonRush/WebOCR.git
 ```
-Create a new branch to work in locally, and send a pull request to me to merge with your work. 
+
+Create a new branch to work in locally, and send a pull request to me to merge with your work.
 
 ## Todo
 
-* Implement PWA features.
-* Implement local storage to save previous runs.
+* Implemented PWA features. ✔️
+* Changed name. ✔️
+* Implement IndexedDB to save previous runs.
 * Implement PDF conversion.
 * Implement or remove language checkboxes.
 * Implement security features.
@@ -80,15 +90,14 @@ Create a new branch to work in locally, and send a pull request to me to merge w
 * Set size limits for uploads.
 * Create drag and drop region for file
 * Clean up and improve CSS.
-* Allow user to crop image before submitting. 
-* Think of better name.
-* ...
+* Allow user to crop image before submitting.
 
 ## Authors
 
-* **Brandon** - *Programming*
+* **Brandon** - _Programming_
 * ...
 
 ## Notes
+
 * Right now the language checkboxes don't do anything.
-* The tesseract.js library loads the necessary files from a CDN. These files could be installed locally instead. 
+* The tesseract.js library loads the necessary files from a CDN. These files are cached by the service worker.
