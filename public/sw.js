@@ -1,63 +1,35 @@
-const PRECACHE = 'precache-v1';
-const RUNTIME = 'runtime';
+let cacheName = 'v1.01';
+let cacheFiles = ['./', './index.html', './styles.css', 'bundle.js'];
 
-// A list of local resources we always want to be cached.
-const PRECACHE_URLS = [
-  './styles.css',
-  './index.html',
-  './bundle.js',
-  './favicon.png',
-  './'
-];
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches
-      .open(PRECACHE)
-      .then((cache) => cache.addAll(PRECACHE_URLS))
-      .then(self.skipWaiting())
+self.addEventListener('install', (e) => {
+  console.log('[ServiceWorker] Installed');
+  e.waitUntil(
+    caches.open(cacheName).then((cache) => {
+      console.log('[ServiceWorker] Caching cacheFiles');
+      return cache.addAll(cacheFiles);
+    })
   );
 });
 
-self.addEventListener('activate', (event) => {
-  const currentCaches = [PRECACHE, RUNTIME];
-  event.waitUntil(
-    caches
-      .keys()
-      .then((cacheNames) => {
-        return cacheNames.filter(
-          (cacheName) => !currentCaches.includes(cacheName)
-        );
-      })
-      .then((cachesToDelete) => {
-        return Promise.all(
-          cachesToDelete.map((cacheToDelete) => {
-            return caches.delete(cacheToDelete);
-          })
-        );
-      })
-      .then(() => self.clients.claim())
+self.addEventListener('activate', (e) => {
+  console.log('[ServiceWorker] Activated');
+  e.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((thisCacheName) => {
+          if (thisCachename !== cacheName) {
+            console.log(
+              '[ServiceWorker] Removing Cached Files from ',
+              thisCacheName
+            );
+            return caches.delete(thisCacheName);
+          }
+        })
+      );
+    })
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  // Skip cross-origin requests, like those for Google Analytics.
-  if (event.request.url.startsWith(self.location.origin)) {
-    event.respondWith(
-      caches.match(event.request).then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-
-        return caches.open(RUNTIME).then((cache) => {
-          return fetch(event.request).then((response) => {
-            // Put a copy of the response in the runtime cache.
-            return cache.put(event.request, response.clone()).then(() => {
-              return response;
-            });
-          });
-        });
-      })
-    );
-  }
+self.addEventListener('fetch', (e) => {
+  console.log('[ServiceWorker] Fetching', e.request.url);
 });

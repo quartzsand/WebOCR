@@ -1,4 +1,5 @@
 const Tesseract = require('tesseract.js');
+
 //////////////////////////////////////
 window.indexedDB =
   window.indexedDB ||
@@ -28,8 +29,14 @@ request.onsuccess = (event) => {
 
 //////////////////////////////////////
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js');
-  console.log('Service worker registered.');
+  navigator.serviceWorker
+    .register('./sw.js')
+    .then((registration) => {
+      console.log('Service Worker Registered');
+    })
+    .catch((err) => {
+      console.error('Error registering service worker!');
+    });
 }
 
 function init() {
