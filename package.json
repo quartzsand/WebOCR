@@ -2,7 +2,6 @@
   "name": "project",
   "version": "1.0.0",
   "description": "Text recognition from media.",
-  "main": "index.js",
   "scripts": {
     "build": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +11,7 @@
   "dependencies": {
     "bulma": "^0.6.2",
     "express": "^4.16.3",
+    "heroku-ssl-redirect": "0.0.4",
     "node-tesseract": "^0.2.7",
     "tesseract.js": "^1.0.10"
   },
