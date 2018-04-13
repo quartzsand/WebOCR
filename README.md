@@ -1,4 +1,4 @@
-# WebOCR
+# WebOCR - https://secure-temple-47652.herokuapp.com/
 
 Web app that extracts text from an image/pdf.
 
@@ -17,7 +17,7 @@ What you need to install the software.
 #### 1. Open the directory you want to work in and clone the source.
 
 ```Shell
-git clone https://github.com/BrandonRush/Project.git
+git clone https://github.com/BrandonRush/WebOCR.git
 ```
 
 #### 2. Install all dependencies listed in the package.json file (see dependencies below). You will then have a 'node_modules' folder.
