@@ -10,12 +10,12 @@ body {
 #maintitle {
   /* background-color: rgb(33, 155, 86); */
   text-shadow: 2px 2px hsla(217, 61%, 32%, 0.762);
-  font-size: 5em;
+  font-size: 4em;
   padding: 5px;
   text-align: center;
   color: white;
   background-color: #3273dc;
-  font-size: 5em;
+  font-size: 4.5em;
   letter-spacing: 4px;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
