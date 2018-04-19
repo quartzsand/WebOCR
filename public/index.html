@@ -6,8 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#ff6978" />
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"> -->
+  <meta name="theme-color" content="#3273dc" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
   <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./styles.css">
   <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
@@ -19,62 +19,58 @@
   <header class="title" id="maintitle">
     <div id="loader"></div>
     <p title="Web Optical Character Recognition" id="titletext">WebOCR</p>
+    <a id="github" target="_blank" href="https://github.com/BrandonRush/WebOCR">https://github.com/BrandonRush/WebOCR</a>
   </header>
   <div id="container">
     <div id="display">
-      <div id="fade"></div>
-      <div id="spinner"></div>
-
       <form id="myForm">
         <div>
           <span>
-            <label for="file">
-              <input type="file" name="file" id="file">
-            </label>
-          </span>
-
-          <span>
-            <div>
-              <label for="eng">
-                <input type="checkbox" name="eng" class="lang" id="eng"> English
-              </label>
-              <label for="spa">
-                <input type="checkbox" name="spn" class="lang" id="spa"> Spanish
-              </label>
-              <label for="fra">
-                <input type="checkbox" name="fra" class="lang" id="fra"> French
-              </label>
-            </div>
-            <div>
-              <label for="rus">
-                <input type="checkbox" name="rus" class="lang" id="rus"> Russian
-              </label>
-              <label for="chn">
-                <input type="checkbox" name="chn" class="lang" id="chn"> Chinese
-              </label>
-              <label for="arb">
-                <input type="checkbox" name="arb" class="lang" id="arb"> Arabic
+            <div class="file is-white has-name">
+              <label class="file-label">
+                <input class="file-input " type="file" id="file" name="Upload">
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    Choose a file…
+                  </span>
+                </span>
+                <span class="file-name" id="filename">
+                </span>
               </label>
             </div>
           </span>
-        </div>
 
-        <div>
-          <label for="submit">
-            <button type="button" id="submit">Submit</button>
-          </label>
-
+          <span id="language">
+            <div class="select is-link">
+              <select id="languageform">
+                <option class="lang" name="eng">English</option>
+                <option class="lang" name="spn">Spanish</option>
+                <option class="lang" name="fra">French</option>
+                <option class="lang" name="rus">Russian</option>
+                <option class="lang" name="chi_sim">Chinese</option>
+                <option class="lang" name="ara">Arabic</option>
+                <option class="lang" name="deu">German</option>
+                <option class="lang" name="heb">Hebrew</option>
+                <option class="lang" name="jpn">Japanese</option>
+                <option class="lang" name="kor">Korean</option>
+                <option class="lang" name="tur">Turkish</option>
+              </select>
+            </div>
+          </span>
         </div>
+        <span>
+          <div>
+            <a class="button is-link" id="submit">Submit</a>
+          </div>
+        </span>
       </form>
+      <br>
+      <br>
     </div>
-    <footer>
-      <!-- Place this tag where you want the button to render. -->
-      <a class="github-button" href="https://github.com/BrandonRush/WebOCR/fork" data-icon="octicon-repo-forked" data-size="large"
-        aria-label="Fork BrandonRush/WebOCR on GitHub">Fork</a>
-    </footer>
     <script src="./bundle.js"></script>
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>

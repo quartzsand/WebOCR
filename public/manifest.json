@@ -1,9 +1,10 @@
 {
   "name": "WebOCR",
   "short_name": "WebOCR",
-  "theme_color": "#ff6978",
-  "background_color": "#fffcf9",
+  "theme_color": "#3273dc",
+  "background_color": "#ffffff",
   "display": "standalone",
+  "orientation": "portrait",
   "Scope": "/",
   "start_url": "/",
   "icons": [

@@ -1,4 +1,18 @@
 const Tesseract = require('tesseract.js');
+let submit = document.getElementById('submit');
+const languages = {
+  English: 'eng',
+  Spanish: 'spn',
+  French: 'fra',
+  Russian: 'rus',
+  Chinese: 'chi_sim',
+  Arabic: 'arb',
+  German: 'deu',
+  Hebrew: 'heb',
+  Japanese: 'jpn',
+  Korean: 'kor',
+  Turkish: 'tur'
+};
 
 //////////////////////////////////////
 window.indexedDB =
@@ -24,39 +38,34 @@ request.onerror = (event) => {
   console.log('Error opening database!');
 };
 request.onsuccess = (event) => {
+  console.log('Opened IndexedDB database.');
   db = event.target.result;
 };
 
-//////////////////////////////////////
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker
-      .register('./sw.js')
-      .then((registration) => {
-        console.log('Service Worker Registered');
-      })
-      .catch((err) => {
-        console.error('Error registering service worker!');
-      });
-  });
-}
+// ////////////////////////////////////
+// if ('serviceWorker' in navigator) {
+//   window.addEventListener('load', function() {
+//     navigator.serviceWorker
+//       .register('./sw.js')
+//       .then((registration) => {
+//         console.log('Service Worker Registered');
+//       })
+//       .catch((err) => {
+//         console.error('Error registering service worker!');
+//       });
+//   });
+// }
 
 function init() {
   const file = document.getElementById('file').files[0];
-  const lang = document.querySelectorAll('.lang');
+  let language = document.getElementById('languageform').value;
 
-  let options = '';
-  lang.forEach((elem) => {
-    if (elem.checked) {
-      options += elem.id;
-    }
-  });
+  document.getElementById('filename').innerHTML = '';
 
-  console.log(options);
   if (file.type.match(/image.*/)) {
     const reader = new FileReader();
     reader.onload = (e) => {
-      buildEntry(reader.result);
+      buildEntry(reader.result, language);
     };
     reader.readAsDataURL(file);
   } else if (file.type.match(/application.pdf/)) {
@@ -67,49 +76,73 @@ function init() {
   document.getElementById('file').value = '';
 }
 
-function openSpinner() {
-  document.getElementById('spinner').style.display = 'block';
-  document.getElementById('fade').style.display = 'block';
-}
+function buildEntry(image, language) {
+  let box = document.createElement('div');
+  box.className = 'box';
 
-function closeSpinner() {
-  document.getElementById('spinner').style.display = 'none';
-  document.getElementById('fade').style.display = 'none';
-}
+  let article = document.createElement('article');
+  article.className = 'media';
 
-function buildEntry(result) {
-  let entry = document.createElement('div');
-  entry.className = 'entry';
+  let media = document.createElement('div');
+  media.className = 'media-left';
 
-  let text = document.createElement('div');
-  text.className = 'text';
+  let figure = document.createElement('figure');
+  figure.className = 'image is-64x64';
+
+  let mediaContent = document.createElement('div');
+  mediaContent.className = 'media-content';
+
+  let content = document.createElement('div');
+  content.className = 'content';
+
+  let text = document.createElement('p');
 
   let img = new Image();
   img.className = 'thumb';
-  img.src = result;
+  img.src = image;
 
-  img.addEventListener('click', (e) => {
-    if (e.target.style.width === '100%') {
-      e.target.style.width = '15%';
-    } else {
-      e.target.style.width = '100%';
-    }
-  });
+  // img.addEventListener('click', (e) => {
+  //   if (e.target.style.width === '100%') {
+  //     e.target.style.width = '15%';
+  //   } else {
+  //     e.target.style.width = '100%';
+  //   }
+  // });
 
-  openSpinner();
-  Tesseract.recognize(result)
+  box.appendChild(article);
+  article.appendChild(media);
+  media.appendChild(figure);
+  figure.appendChild(img);
+  article.appendChild(mediaContent);
+  mediaContent.appendChild(content);
+  content.appendChild(text);
+
+  let mylang = languages[language];
+  console.log(mylang);
+  Tesseract.recognize(image, { lang: mylang })
     .progress((message) => {
-      console.log(messasge.text);
-      // text.innerHTML = message.text;
+      submit.className = 'button is-loading';
     })
     .then((result) => {
-      closeSpinner();
+      submit.className = 'button';
       text.innerHTML = result.text;
+      document
+        .getElementById('display')
+        .appendChild(box)
+        .scrollIntoView({ block: 'end', behavior: 'smooth' });
+    })
+    .catch((result) => {
+      submit.className = 'button';
+      text.innerHTML = 'This image could not be processed correctly!';
+      document.getElementById('display').appendChild(box);
     });
-
-  entry.appendChild(img);
-  entry.appendChild(text);
-  document.getElementById('display').appendChild(entry);
 }
+
+var file = document.getElementById('file');
+file.onchange = function() {
+  if (file.files.length > 0) {
+    document.getElementById('filename').innerHTML = file.files[0].name;
+  }
+};
 
 document.getElementById('submit').addEventListener('click', init);

@@ -3,16 +3,18 @@ body {
   font-family: 'Titillium Web', 'Times New Roman', Times, cursive;
   margin: 0;
   padding: 0;
-  background-color: #fffcf9;
+  background-color: white;
   overflow-x: hidden;
 }
 
 #maintitle {
   /* background-color: rgb(33, 155, 86); */
+  text-shadow: 2px 2px hsla(217, 61%, 32%, 0.762);
+  font-size: 5em;
   padding: 5px;
   text-align: center;
-  color: #ff6978;
-  background-color: rgba(177, 237, 232, 0.231);
+  color: white;
+  background-color: #3273dc;
   font-size: 5em;
   letter-spacing: 4px;
   -webkit-user-select: none; /* Safari */
@@ -45,7 +47,7 @@ footer {
   border: 2px solid black;
   height: 100px;
   width: 100px;
-  background-color: #b1ede8;
+  background-color: black;
 }
 
 #container {
@@ -56,15 +58,32 @@ footer {
   margin: 0px;
 }
 
+#github {
+  margin: 0px;
+  padding: 0px;
+
+  text-shadow: none;
+  color: hsl(217, 44%, 83%);
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  letter-spacing: normal;
+
+  -webkit-user-select: text; /* Safari */
+  -moz-user-select: text; /* Firefox */
+  -ms-user-select: text; /* IE10+/Edge */
+  user-select: text; /* Standard */
+}
+
 #display {
-  color: #ff6978;
+  color: hsl(217, 71%, 53%);
   margin: 20px 20px 20px 20px;
   padding: 15px;
   width: 1200px;
   height: auto;
   border-style: solid;
   border-width: 2px;
-  background-color: rgba(177, 237, 232, 0.231);
+  background-color: rgba(0, 0, 0, 0.054);
   border-radius: 10px;
   /* -webkit-transition: all 0.5s linear;
   -moz-transition: all 0.5s linear;
@@ -73,13 +92,14 @@ footer {
 }
 
 input,
-label {
+label,
+#language {
   font-family: Arial, Helvetica, sans-serif;
   padding: 5px;
   margin: 5px;
 }
 
-button {
+.button {
   margin: 5px;
 }
 
