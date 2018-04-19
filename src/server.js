@@ -9,7 +9,10 @@ app.use((req, res, next) => {
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('Content-Security-Policy-Report-Only', 'default-src https:');
+  res.setHeader(
+    'Content-Security-Policy-Report-Only',
+    "default-src 'data'; img-src 'self'; object-src 'self' https://cdn.rawgit.com/*; script-src 'self' https://cdn.rawgit.com/*; style-src 'self' https://cdn.cloudflare.com/*"
+  );
 
   next();
 });
