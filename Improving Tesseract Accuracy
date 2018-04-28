@@ -1,14 +1,55 @@
 
 The strings to extract are composed of uppercase letters and numbers. There is no need for dictionaries.
+BUT w camera images many problems: poor images resolution, blurred images, poor lighting or low contrast as a result of the overexposure, reflections, shadows, etc... 
+  It is said that font should be bigger than 12pt & image should have more than 300 DPI. I did all necessary preprocessing such as blurring (if it is needed), contrast enhancement. I even used other engine in Tesseract OCR - it is called CUBE.
+
+couple of key pointers that improves recognition significantly:
+    The engine expects the text to be perpendicular to the edge of the image.
+    Remove background noise. Basically this means using mean adaptive thresholding. I'd also ensure that the characters are black and the background is white.
+    Use the correct resolution. If you get bad results, scale the image up or down until you get good results. You want to aim at approx. font size 14 at 300 dpi; in my software that processes invoices that works best.
+    Don't store images as JPEG; use BMP or PNG or something else that doesn't make the image noisy.
+    If you're only using one or two fonts, try training tesseract on these fonts.
+
+As for point 4, if you know the font that's going to be used, there are some better solutions than using Tesseract like matching these fonts directly on the images... The basic algoritm is to find the digits and match them to all possible characters (which are only 10)... still, the implementation is tricky.
+
+Use OpenCV to recognize box in which numbers are located, but OpenCV is not god for OCR. After you locate box, just crop that part, do image processing and then hand it over to tesseract for OCR
+change any color image to binary image and then use tesseract on it, that way no matter what color you are using you will always have same result.
+can train for one specific font and then specify that trainneddata during recognition of your documents.
+
+OR
+This thread has some good ideas: https://stackoverflow.com/questions/6733533/training-tesseract-3-to-recognize-numbers-from-real-images-of-gas-meters?rq=1
+eg.
+
+try this simple ImageMagick command ImageMagick to preprocess the images first(Aug 19 '12 at 18:30 Kurt Pfeifle, Stackoverflow):
+
+ convert          \
+    original.jpg  \
+   -threshold 50% \
+    result.jpg
+
+(Play a bit with the 50% parameter -- try with smaller and higher values...)
+Thresholding basically leaves over only 2 values, zero or maximum, for each color channel. Values below the threshold get set to 0, values above it get set to 255 (or 65535 if working at 16-bit depth).
+Depending on your original.jpg, you may have a OCR-able, working, very high contrast image as a result.
+
+
+OR
+
+
+    use a tool to edit the boxes, such jTessBoxEditor, it's so helpful and let you winning a time. You can install it easily from here
+    it's good idea to train the letters of actual situation (noisy, blurred). Your training set is still limited, you can add more training samples.
+
+    I recommend you to use Tesseract's API themselves to enhance the image (denoise, normalize, sharpen...) for example : Boxa * tesseract::TessBaseAPI::GetConnectedComponents(Pixa** pixa) (it allows you to get to the bounding boxes of each character)
+
+    Pix* pimg = tess_api->GetThresholdedImage();
 
 
 
 
-
-
+AND
+ 
 Pilotito_dev on stackoverflow {https://stackoverflow.com/questions/31145200/achieve-better-recognition-results-via-training-tesseract?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa} wrote:
 
-I used Scalr's method within BufferedImage to increase the size of the image:
+used Scalr's method within BufferedImage to increase the size of the image:
 
 BufferedImage bufImg = Scalr.resize(...)
 
@@ -19,6 +60,54 @@ Following these steps brought Tesseract's accuracy from a 30% to around an 85% w
 
 Scalr info here: http://www.tothenew.com/blog/image-scaling-with-imgscalr-java-image-scaling-library/
 Repo here: https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0ahUKEwjLjdb8n9zaAhVMrFMKHeCWA3gQFgg3MAI&url=https%3A%2F%2Fgithub.com%2Frkalla%2Fimgscalr&usg=AOvVaw3priP1L0fFIPiJ4qMgcuxn
+
+AND
+
+
+If you done with all necessary image processing then try this, It may helpful for you
+
+ CGSize size = [image size];
+ int width = size.width;
+ int height = size.height;
+
+ uint32_t* _pixels = (uint32_t *) malloc(width * height * sizeof(uint32_t));
+ if (!_pixels) {
+      return;//Invalid image
+   }
+
+ // Clear the pixels so any transparency is preserved
+  memset(_pixels, 0, width * height * sizeof(uint32_t));
+
+  CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+
+  // Create a context with RGBA _pixels
+  CGContextRef context = CGBitmapContextCreate(_pixels, width, height, 8, width * sizeof(uint32_t), colorSpace,kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedLast);
+
+  // Paint the bitmap to our context which will fill in the _pixels array
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), [image CGImage]);
+
+  // We're done with the context and color space
+    CGContextRelease(context);
+    CGColorSpaceRelease(colorSpace);
+
+    _tesseract->SetImage((const unsigned char *) _pixels, width, height, sizeof(uint32_t), width * sizeof(uint32_t));
+
+
+    _tesseract->SetVariable("tessedit_char_whitelist", ".#0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz/-!");
+    _tesseract->SetVariable("tessedit_consistent_reps", "0");
+
+
+    char* utf8Text = _tesseract->GetUTF8Text();
+    NSString *str = nil;
+
+   if (utf8Text) {
+       str =  [NSString stringWithUTF8String:utf8Text];
+     }
+
+shareimprove this answer
+answered Nov 21 '13 at 8:09
+Bhumeshwer katre
+4,18521428
 
 
 *************************
