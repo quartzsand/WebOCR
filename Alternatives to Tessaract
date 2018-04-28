@@ -20,3 +20,4 @@ Have a look at gImageReader. tried and the results are very bad. It is based off
  
  after trying this with sample file importance of preprocessing, file, only passing appropriate text blocks, accounting for glare w multiple images etc is clear.
  it seems that QR codes likely are the solution to explore for now.
+the limitation may be in reading multiple QR codes at a time
