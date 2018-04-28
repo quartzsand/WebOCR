@@ -17,7 +17,8 @@ which instantly yielded more accurate results with black text on gray background
 Following these steps brought Tesseract's accuracy from a 30% to around an 85% when dealing with green text on black background, and a really-close-to-100% accuracy when dealing with normal black text on white background. (sometimes letters within a word are mistaken by numbers i.e. hel10)
 
 
-
+Scalr info here: http://www.tothenew.com/blog/image-scaling-with-imgscalr-java-image-scaling-library/
+Repo here: https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0ahUKEwjLjdb8n9zaAhVMrFMKHeCWA3gQFgg3MAI&url=https%3A%2F%2Fgithub.com%2Frkalla%2Fimgscalr&usg=AOvVaw3priP1L0fFIPiJ4qMgcuxn
 
 
 *************************
