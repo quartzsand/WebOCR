@@ -1,1 +1,22 @@
 
+First question is whether node.JS is appropriate for PWA?
+Assuming light front end PWA passes image to server seems that would create latency issue for image upload depending on bandwidth.
+though may be naive on both counts.
+ could the front end process the image and only send cropped jpegs containing the relevant text?
+ 
+ For accuracy will have to identify the fields. If use barcode could remove Grid text and print underneath/
+ 
+ could the OCR be loaded w the front end?
+ 
+ Most alternatives are either web or API based. eg:
+ from https://softwarerecs.stackexchange.com/questions/40538/text-recognition-ocr-software-to-extract-serial-numbers-allowing-professional
+ 
+ (IrfanView 32-bit version + KADMOS OCR plugin): http://irfanview.info/plugins/kadmos/, but is only allows personal (non commercial) use.
+To contact IfranView dev for pricing? On the 'What is IfranView' page (irfanview.com/main_what_is_engl.htm) he's got an e-mail link where you can request professional use pricing.
+ The issue is the license of the Kadmos plugin, which only allows personal use (it displays at install). The products of this editor start at 250 USD: best-ocr.com/prices.htm
+ SimpleOCR which did not convince me.
+Have a look at gImageReader. tried and the results are very bad. It is based off of Tesseract OCR. The former is licensed under GPL v3 while the latter is licensed under Apache 2.0
+ ocr.space/ocrapi 25,000/month for free.
+ 
+ after trying this with sample file importance of preprocessing, file, only passing appropriate text blocks, accounting for glare w multiple images etc is clear.
+ it seems that QR codes likely are the solution to explore for now.
