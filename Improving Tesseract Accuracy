@@ -1,0 +1,23 @@
+
+The strings to extract are composed of uppercase letters and numbers. There is no need for dictionaries.
+
+
+
+
+
+
+Pilotito_dev on stackoverflow {https://stackoverflow.com/questions/31145200/achieve-better-recognition-results-via-training-tesseract?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa} wrote:
+
+I used Scalr's method within BufferedImage to increase the size of the image:
+
+BufferedImage bufImg = Scalr.resize(...)
+
+which instantly yielded more accurate results with black text on gray background. I then used BufferedImage's options BufferedImage.TYPE_BYTE_GRAY and BufferedImage.TYPE_BYTE_BINARY when creating a new BufferedImage to process the Image to grayscale and black/white, respectively.
+
+Following these steps brought Tesseract's accuracy from a 30% to around an 85% when dealing with green text on black background, and a really-close-to-100% accuracy when dealing with normal black text on white background. (sometimes letters within a word are mistaken by numbers i.e. hel10)
+
+
+
+
+
+*************************
