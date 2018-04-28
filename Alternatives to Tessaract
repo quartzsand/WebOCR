@@ -8,7 +8,15 @@ though may be naive on both counts.
  
  could the OCR be loaded w the front end?
  
+ ?resources here: https://opencv.org/  (ie open computer vison.org)
+ android ap: https://play.google.com/store/apps/details?id=edu.sfsu.cs.orange.ocr
+ 
  Most alternatives are either web or API based. eg:
+ https://www.abbyy.com/en-us/mobile-ocr/
+ https://ocrsdk.com/plans-and-pricing/   ... also abby site, does free barcodes
+ https://www.leadtools.com/sdk/web/html5  ... no pricing info, but has comprehensive image processing in html5, .JS.  Sales: +1-704-332-5532
+Sales: sales@leadtools.com $1995
+ 
  from https://softwarerecs.stackexchange.com/questions/40538/text-recognition-ocr-software-to-extract-serial-numbers-allowing-professional
  
  (IrfanView 32-bit version + KADMOS OCR plugin): http://irfanview.info/plugins/kadmos/, but is only allows personal (non commercial) use.
