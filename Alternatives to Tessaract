@@ -8,6 +8,11 @@ though may be naive on both counts.
  
  could the OCR be loaded w the front end?
  
+ Cloud Vision API
+ https://cloud.google.com/vision/
+ https://angularfirebase.com/lessons/advanced-cloud-vision-ocr-text-extraction/#Image-Text-Extraction
+ https://cloud.google.com/nodejs/docs/reference/vision/0.19.x/
+ 
  ?resources here: https://opencv.org/  (ie open computer vison.org)
  android ap: https://play.google.com/store/apps/details?id=edu.sfsu.cs.orange.ocr
  
